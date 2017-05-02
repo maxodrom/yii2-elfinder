@@ -32,6 +32,10 @@ class Controller extends BaseController{
 			return $this->_options;
 
 		$this->_options['roots'] = [];
+		
+		if (is_callable($this->roots)) {
+		    $this->roots = call_user_func($this->roots);
+        }
 
 		foreach($this->roots as $root){
 			if(is_string($root))
